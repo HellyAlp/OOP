@@ -1,0 +1,46 @@
+=============================
+=      File description     =
+=============================
+1.BoopingSite.java -  A class representing hotel booking site with 3 search methodologies.
+2.Locker.java - A class that represents locker object.
+3.LongTermStorage.java - A class that represents long term storage object.
+4.ProximityAndPOIComparator.java-This class creates the ProximityAndPOIComparator.
+5.RatingAndAlphabeticComparator.java-This class creates the RatingAndAlphabeticComparator.
+6.Spaceship.java- A class that represents Spaceship object.
+7.SpaceshipDepositoryTest.java- This class is the test suite for Spaceships,locker and LTS test.
+8.BoopingSiteTest.java-This Class contains test methods testing the BoopingSite class and its methods.
+9.LockerTest.java-This Class contains test methods testing the Locker class and its methods.
+10.LongTermTest.java- This Class contains test methods testing the long term storage class and its methods.
+11.SpaceshipTest.java - This Class contains test methods testing the Spacechip class and its methods.
+
+=============================
+=          Design           =
+=============================
+The spaceShip design:
+I decided to keep the locker class and lts separated because there are not a lot of functions alike,
+more over, i used a special calculation for taken capacity in each class and if the two classes was childs of the same
+class it would cause problems.
+I think that because of the fact that there is not a lot of code duplication and most of the classes is different the
+choice to keep them apart was the right one.
+The hotel design:
+I decided to add 2 files that in them ive implemented 2 different comparators.
+In the comparator ive chose the comper mathod that will fit the exrices description.
+The two comparators is ProximityAndPOIComparator and RatingAndAlphabeticComparator.
+
+=============================
+=  Implementation details   =
+=============================
+Each method in every class has implementation details.
+hotel part:
+getHotelsInCityByRating - This method returns an array of hotels located in the given city, sorted from the highest
+star-rating to same rating will be organized according to the alphabet order of the hotel’s (property) name. In case
+there are no hotels in the given city, this method returns an empty array.
+getHotelsByProximity- This method returns an array of hotels, sorted according to their euclidean distance from the given geographic
+location, in ascending order. Hotels that are at the same distance from the given location are organized
+according to the number of points-of-interest for which they are close to (in a decreasing order). In
+case of illegal input, this method returns an empty array
+proximityHelper -unction that is a helper for sorting arrays in proximity order.
+getHotelsInCityByProximity - This method returns an array of hotels in the given city, sorted according to their Euclidean distance
+from the given geographic location, in ascending order. Hotels that are at the same distance from the
+given location are organized according to the number of points-of-interest for which they are close to
+(in a decreasing order). In case of illegal input, this method returns an empty array.
