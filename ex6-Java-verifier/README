@@ -1,0 +1,85 @@
+=============================
+=      File description     =
+=============================
+package oop.ex6.main:
+1. Sjavac class - This class is the manager class of the Sjavac commandsFiles.
+            It calls all the relevant methods and classes to make the correct checking according to the
+            Sjavac principles.
+
+2. parsing package:
+    2.1 Parser class -  This is the parsing class. In this class, its get a file and first convert
+                  it to an array of String lines. Than, it split it to global scope and methods object.
+    1.2 ParsingException - This is the Parsing exception class. It called if there is an ParsingException.
+
+2. validator package:
+    2.1 general Checks package:
+        2.1.1  AllGeneralChecks class - It runs the general basic check for each line for first
+        approve of the line. The methods in this class checking if the line is one of the follow -
+        empty line, comment line or code line, and if so, if it ended with ;, { or, }.
+        2.1.2 IllegalContentException class - whenever IllegalContentException
+        thrown, it get the massage and throw new IllegalContentException with the massage
+        showing the problem.
+
+    2.2  globalScope package -
+        2.2.1  GlobalValidation class -  In this class, some global scope are preformed such as format
+        validation for initialized variable or add value to existing value.
+
+    2.3 MethodScope package -
+        2.3.1  method object class - It creates a method object and initialize the name, lines and
+               parameters of the methods. There is also the validation function for validation
+               of each method in the javac file.
+        2.3.2  MethodValidation class -  It runs all the checks needed to validate a method.
+
+    2.4 TypeChecks package -
+        2.4.1 AllTypeCheck class - This class contains all the type checks. It runs all the relevant methods
+        who validate this method. It gets the method object and check it correctness.
+
+
+    2.5 CodeValidation interface -  the code validation interface have two methods, the validationCheck and
+    keywordValidation that implement in the inheritance classes
+
+    2.6 PatternSearch class - This class is helper class for the classes in this exercise.
+    It contains 3 methods who search a pattern in an input string and return it.
+
+    2.7 ValidationException class - whenever ValidationException thrown, it get the massage and
+    throw new ValidationException with the massage showing the problem.
+
+=============================
+=          Design           =
+=============================
+Our design choices in detail:
+We chose to create a main package, parsing package, and validator package.
+we divided our program to those 3 main packages in order to keep the modularity principle.
+We believe that those 3 part are connected by the flow of the program but their role is different, this separation
+allows us to be able to change our code early if needed.
+For example, if we get a different file format or different code language rules.
+In the validator package we created few sub packages for the same reason.
+we create an interface called CodeValidation that both the GlobalValidation and the MethodValidation implements.
+We did it because every object validation needs the same functions - that is defined in the interface, but each object
+validation implements these method differently.
+This action also allows as to add more object to validate such as classes, interfaces etc.
+We made a class named PatternSearch that contains few regex related methods- that few of the classes extends.
+We did it because almost all of the classes uses regex in one way or another.
+
+=============================
+=  Implementation details   =
+=============================
+Describe the exceptions hierarchy you used in order to handle errors in the program. Explain
+the considerations that made you choose that specific design:
+We choose to implement 4 types of exception:
+1. ParsingException- This exception is called when there is a problem in the Parsing stage that is taking place in the
+Parser class- a class that get a file and first convert it to an array of String lines and split it to global scope and
+methods object.we decided make an exception that handel this case because we thought that the parsing stage is very
+different from the other program parts and the problem in it is often because of reasons that wont take place in the
+other parts (in tha validation package for example);
+2. IllegalContentException - This exception is called when there is a problem in the general checks stage that is taking
+place in the AllGeneralChecks class - a class that runs the general basic check for each line for first approve
+of the line. The methods in this class checking if the line is one of the follow - empty line, comment line or
+ code line, and if so, if it ended with ;, { or, }.
+we decided to make an exception that handel those cases because they are very general and relevant to every line in the
+file given.
+3. IllegalTypeException- This exception is called when there is a problem in the Type Check Stage specifically.
+It is called in cases like if the type syntax is wrong.
+we chose to implement this exception because this is a problem that can occur anywhere (Scope-wise).
+4. ValidationException - This exception part is mainly binding all the problems that occurs in the code validation
+process.
