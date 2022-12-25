@@ -1,0 +1,51 @@
+=============================
+=      File description     =
+=============================
+(1)SimpleHashSet.java -> A file that contains A superclass for implementations of hash-sets implementing
+ the SimpleSet interface.
+(2)OpenHashSet.java ->A file that contains A class that implements Open hash set.
+(3)LinkedListWrapper.java ->A file that contains A wrapper class for linked list objects for OpenHashSet class.
+(4)ClosedHashSet.java ->A file that contains A class that implements Closed hash set.
+(5)CollectionFacadeSet.java ->A file that contain A class that Wraps an underlying Collection and serves to both
+ simplify its API and give it a common type with the  implemented SimpleHashSets.
+(6)SimpleSetPerformanceAnalyzer.java ->A file that contains A class that contains methods that analyze different
+simple sets performance.
+
+=============================
+=          Design           =
+=============================
+I decided to change some of the methods in the SimpleHashSet to abstract and implementing them differently in the open
+and closed class. I did it because all the logical process behind these 2 classes is different and because of it
+ the methods is different.
+ more over on design choice in the next section.
+=============================
+=  Implementation details   =
+=============================
+~~methods I added (beyond the ones in the API)~~
+(1) OpenHashSet Class:
+    *resizeTable-  method that resize the hash table (if increase needed-twice the current size,
+         if decrease needed-half the current size) by creating a new hash table and adding all the values
+         from the original to it.
+(2) ClosedHashSet:
+    *increaseTable - A method that increases the hash table (twice the current size) by creating a new one and adding
+    all the values from the original to it.
+    *decreaseTable - A method that decreases the hash table (half the current size) by creating a new one and adding
+    all the values from the original to it.
+    *probingVal- A function that do the calculation of probing value.
+    *addObject-  method that adds a specific value to the hash table.
+(3) SimpleSetPerformanceAnalyzer:
+    *tests1and2 -method that measure the time it takes to a specific data structure to add a given string Array.
+    *contains - method that measure the time it takes to a specific data structure to check if it contains a given
+     string.
+~~implementing OpenHashSet's table~~
+as we know, it is not possible to create an generic array of linked list Strings in this class,
+therefore, I decided to define a wrapper class that has a linked list and use delegation as we learn in the lectures.
+I decided to implement in this way because i thought this is the best way for some reasons-
+using delegation allows as to change the object and we get modular code.
+more over, this class already extends another class and we cannot extend more then one class, and delegation allows
+as to to get the advantages of inheritance without the disadvantages.
+~~implementing Closed's table~~
+I decided to work with Object[] array and not String[] array in order to "flag" the cell after specific value removal
+with the int 0.
+Implementing this way allowed me to be able to work with all the String objects as is the array was String[] type, but I
+allow insertion of all strings possible.
