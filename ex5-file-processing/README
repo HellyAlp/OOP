@@ -1,0 +1,60 @@
+=============================
+=      File description     =
+=============================
+~~~~FILTER package~~~~
+(1)Filter- An abstract class representing a filter.
+(2)AllFilter -  A class representing a filter that do not filter the files.
+(3)BetweenFilter- A class representing a filter that filter the files that their size is between the 2 values given.
+(4)ContainsFilter-A class representing a filter that filter the files that contains the value given in their name.
+(5)ExecutableFilter-A class representing a filter that filter the files the executable or not according to the value
+ given.
+(6)FileFilter-A class representing a filter that filter the files that named like the value given.
+(7)GreaterThanFilter-A class representing a filter that filter the files that their size is bigger than the value given.
+(8)HiddenFilter-A class representing a filter that filter the files that hidden or not according to the value given.
+(9)PrefixFilter-A class representing a filter that filter the files that their prefix equals to the value given .
+(10)SmallerThanFilter-A class representing a filter that filter the files that their size is smaller than the value
+ given.
+(11)SuffixFilter-A class representing a filter that filter the files that their suffix equals to the value given .
+(12)WriteableFilter-A class representing a filter that filter the files the writeable or not according to the value
+ given.
+(13)FiltersFactory-A class that represents a factory class for creating Order objects.
+
+~~~~ORDER package~~~~~
+(1)Order- An abstract class representing a Order.
+(2)AbsOrder-A class that contains methods that order files by their absolute path.
+(3)SizeOrder- A class that contains methods that order files by their size.
+(4)TypeOrder-A class that contains methods that order files by their type.
+(5)Comparators- classes that implements comparator method for comparing.
+(6)OrderFactory-A class that represents a factory class for creating Order objects.
+
+~~~~Parsing package~~~~~
+(1)ParsingModule-A class that is inside the Parsing package that has methods that parses a given file.
+(2)NoOrderException-A class that part of the parsing sub-package. represents a NoOrderException exception.
+(3)NoFilterException-A class that part of the parsing sub-package. represents a NoFilterException exception.
+
+~~~~Section package~~~~
+(1)SectionModule- A class representing single section in the command file.
+
+~~~main program files~~~
+(1)DirectoryProcessor-The main class in the project. represent the program that gets a file and a directory and
+ filters and orders the files in the given directory according to the commands in the file.
+=============================
+=          Design           =
+=============================
+I've decided to implement the modularity principle by creating a package for each part of the big program.
+I've chose to use this principle in order to ensure that each part can be changed (if we decide to change parts from the
+program) and this change wont effect the program.
+In the Filter and Order packages i've decided to use the Factory principle by creating factory for each package that
+creates the objects.
+I've chose to use this principle in order to separate the code that create the objects and the code that uses the
+objects in order to support the modularity principle.
+I've decided to make a Filter and Order object by creating a abstract class for each that every filter\object type
+extends. I did it because all the types need to do the same action but in different ways.
+=============================
+=  Implementation details   =
+=============================
+I've decided to use merge sort algorithm to sort my matched files. I used this algorithm because its worst case complexity is O(nlogn) which
+allows us to sort a lot of data in minimal time.
+In order to sort (by magic sort) i've created comparators for each order type by implementing Comparator and
+implementing compare method.
+ 
