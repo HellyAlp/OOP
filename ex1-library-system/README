@@ -1,0 +1,28 @@
+=============================
+=      File description     =
+=============================
+ Book.java -  This file contains the class that  represents a book, which has a title
+, author, year of publication and different literary aspects.
+Patron.java - This file contains the class that represents a book, which has a title, 
+author, year of publication and different literary aspects.
+Library.java -This file contains the class that represents a library, 
+which hold a collection of books. Patrons can register at the library to be able to
+check out books, if a copy of the requested book is available.
+
+=============================
+=          Design           =
+=============================
+I designed all the classes as described in the ex API.
+I added one method in the Library class-numBooksBorrowed
+this method check how many books a given patron has already borrwed in
+order to confirm that patron does not borrow more books than allowd.
+
+=============================
+=  Implementation details   =
+=============================
+In the library class I've created an array for books that is register to the library and an array for the patrons
+that registered to the library
+In the ex we were asked to give each object (patron and book) an non negative id number, ive used the object
+index in its array for that
+id number. 
+
