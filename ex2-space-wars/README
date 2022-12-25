@@ -1,0 +1,59 @@
+
+=============================
+=      File description     =
+=============================
+* HumanSpaceShip.java- This file contains a class that represent the Human controlled type spaceship.
+ it inherits all the methods and data members from the abstract class SpaceShips, and overrides few of it's functions-
+ doAction,getImag. This space ship is controlled by the user. The keys are: left-arrow and right-arrow to
+turn, up-arrow to accelerate, ’d’ to fire a shot, ’s’ to turn on the shield, ’a’ to teleport.
+ The order of precedence is: teleport,accelerate and turn, shield activated, firing a shot, regenerating energy.
+ 
+* AggressiveSpaceShip-This file contains a class that represent the Aggressive type spaceship.
+it inherits all the methods and data members from the abstract class SpaceShips,
+ and overrides few of it's functions- doAction,getImag.This space ship pursues other ships and tries to fire at them.
+ 
+* BasherSpaceShip.java- This file contains a class that represent  the Basher type spaceship.
+it inherits all the methods and data members from the abstract class SpaceShips, and
+ overrides few of it's functions- doAction,getImag. This space ship attempts to collide with other ship.
+
+* RunnerSpaceShip-This file  contains a class that represent the Runner type spaceship.
+ it inherits all the methods and data members from the abstract class SpaceShips,
+ and overrides few of it's functions- doAction,getImag. This space ship attempts to run away from the fight.
+
+* DrunkardSpaceShip- This file  contains a class that represent the Drunk type spaceship.
+it inherits all the methods and data members from the abstract class SpaceShips,
+and overrides few of it's functions- doAction,getImag. This space ship driver is drunk and there for he moves only
+ in one direction (right) and fires at random location.
+
+* SpecialSpaceShip - This file  contains a class that represent the special type spaceship.
+ it inherits all the methods and data members from the abstract class SpaceShips, and overrides few of it's functions-
+ doAction,getImage and fire . This space ship is has special skills- its following the closest space ship and shots it.
+Its special skill is that its energy doesnt gets down after firing and it can fire without waiting for 7 rounds.
+more over- the fire method fires 2 shots every time.
+
+* SpaceShip.java-This file contains a class that represent the abstract class SpaceShip.
+This class contains all the data members and actions (different methods like fire,shieldUp,gotHit etc.) that every
+spaceship needs to know and do.
+
+* SpaceShipFactory.java- This file contains a class-This class has a single method and it is used by the supplied
+driver to create all the spaceships objects according to the command line arguments.
+
+=============================
+=          Design           =
+=============================
+I decided to design the game using abstract class.
+I mde the SpaceShip class abstract with two abstract methods- doAction and getImage.
+I chose these 2 methods to be abstract because each spaceship have different action it need to preform and its image
+depends on other factors and looks different.
+All the other methods and data members is regular (not abstract) because there are a lot of similarities between the
+different spaceship types.
+
+=============================
+=  Implementation details   =
+=============================
+Drank spaceship- I decided to make this type of space ship move in on direction (which causes it to rotate without a
+stop) and to shot when the distance from the closest space ship is smaller than random number.
+Special space ship- I decided to override the fire() method and to make the shooting accrue twice. moreover,
+this space ship does not lose energy after firing and does not need to wait 7 rounds.
+more over, I made the spaceship "run" after the closest space ship (similar to the basher type) and these
+qualities made this spaceship pretty invincible.
